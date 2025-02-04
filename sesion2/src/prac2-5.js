@@ -7,7 +7,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 const camera = new THREE.PerspectiveCamera ( 45, window.innerWidth / window.innerHeight, 1, 4000 );
-camera.position.set( 0, 0, 500 );
+camera.position.set( 0, 0, 500);
 
 const RTierra= 50;
 const tierraGeometry= new THREE.SphereGeometry(RTierra,32,32);
@@ -17,7 +17,7 @@ const map = textureLoader.load( mapUrl, ( loaded ) => { renderer.render( scene, 
 const material = new THREE.MeshPhongMaterial( { map: map } );
 const tierra = new THREE.Mesh(tierraGeometry,material);
 
-const RAtmos=RTierra+1;
+const RAtmos=RTierra + 1;
 const atmosGeometry= new THREE.SphereGeometry(RAtmos,32,32);
 const mapUrlatmos = "../textures/atmos.png";   // The file used as texture
 const textureLoaderatmos = new THREE.TextureLoader( );  // The object used to load textures
@@ -34,11 +34,12 @@ grupoTierra.add(atmos);
 grupoTierra.rotateZ(0.36);
 scene.add(grupoTierra);
 
-const RMoon=0.27*RTierra;
+const RMoon=0.27 * RTierra;
 const moonGeometry= new THREE.SphereGeometry(RMoon,32,32);
-const distance= RTierra*60.3;
-const moonMapUrl = 'moon.jpg';
-const moonMap = textureLoader.load( moonMapUrl, ( loaded ) => { renderer.render( scene, camera ); } );
+const distance= 62.5;
+const moonMapUrl = '../textures/moon.jpg';
+const moonTextureLoader= new THREE.TextureLoader();
+const moonMap = moonTextureLoader.load( moonMapUrl, ( loaded ) => { renderer.render( scene, camera ); } );
 const moonMaterial = new THREE.MeshLambertMaterial( { map: moonMap, color: 0x888888 } );
 const moon= new THREE.Mesh(moonGeometry,moonMaterial);
 moon.position.set( Math.sqrt( distance / 2 ) * RTierra, 0, -Math.sqrt( distance / 2 ) * RTierra );
@@ -54,11 +55,11 @@ moonGroup.add( moon );
 moonGroup.rotation.x = 0.089;
 scene.add(moonGroup);
 
-const ambientLight = new THREE.AmbientLight(0x404040); 
+const ambientLight = new THREE.AmbientLight(0x404040,15); 
 scene.add(ambientLight);
 
-const pointLight= new THREE.PointLight(0xFFFFFF, 1,5);
-pointLight.position.set(100, 50, 0);
+const pointLight= new THREE.PointLight(0xFFFFFF, 15,100,1);
+pointLight.position.set(-100, 50, 0);
 scene.add(pointLight);
 
 
