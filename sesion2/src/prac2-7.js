@@ -55,17 +55,39 @@ moonGroup.add( moon );
 moonGroup.rotation.x = 0.089;
 scene.add(moonGroup);
 
-//const ambientLight = new THREE.AmbientLight(0x404040,15); 
-//scene.add(ambientLight);
+const ambientLight = new THREE.AmbientLight(0x404040,15); 
+scene.add(ambientLight);
 
 const pointLight= new THREE.PointLight(0xFFFFFF, 150,100,0.5);
-pointLight.position.set(-100, 50, 0);
+pointLight.position.set(100, 20, 0);
 scene.add(pointLight);
 
 
 
 renderer.render( scene, camera );
 
+const clock = new THREE.Clock( );
+
+function animate( ) {
+
+    const delta = clock.getDelta( ); // Elapsed time in seconds
+
+    // UPDATE THE SCENE ACCORDING TO THE ELAPSED TIME
+    const rotation = ( delta * Math.PI * 2 ) / 24;
+    tierra.rotation.y += rotation;
+    atmos.rotation.y += rotation * 0.95;
+
+    const moonRotationTime= 24*28;
+    const moonRotation= ( delta * Math.PI * 2 ) / moonRotationTime;
+    moonGroup.rotation.y += moonRotation;
+    // Render the scene
+    renderer.render( scene, camera );
+
+    // Request the browser to execute the animation-rendering loop
+    requestAnimationFrame( animate );
+};
+
+animate();
 window.addEventListener( 'resize', ( ) => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix( );
