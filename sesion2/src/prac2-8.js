@@ -6,8 +6,8 @@ const renderer = new THREE.WebGLRenderer( {antialias: true} );
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-const camera = new THREE.PerspectiveCamera ( 45, window.innerWidth / window.innerHeight, 1, 4000 );
-camera.position.set( 0, 0, 500);
+const camera = new THREE.PerspectiveCamera ( 45, window.innerWidth / window.innerHeight, 1, 6000 );
+camera.position.set( 0, 0, 2000);
 
 const RTierra= 50;
 const tierraGeometry= new THREE.SphereGeometry(RTierra,32,32);
@@ -55,6 +55,7 @@ moonGroup.add( moon );
 moonGroup.rotation.x = 0.089;
 scene.add(moonGroup);
 
+
 const pointLight= new THREE.PointLight(0xFFFFFF, 500,500,1);
 pointLight.position.set(100, 50, 50);
 scene.add(pointLight);
@@ -63,6 +64,36 @@ scene.add(pointLight);
 
 renderer.render( scene, camera );
 
+
+const NOISEMAP = '../textures/cloud.png';
+const SUNMAP = '../textures/sun.jpg';
+const sunTextureLoader = new THREE.TextureLoader( );
+const uniforms = {
+    "fogDensity": { value: 0 },
+    "fogColor": { value: new THREE.Vector3( 0, 0, 0 ) },
+    "time": { value: 1.0 },
+    "uvScale": { value: new THREE.Vector2( 3.0, 1.0 ) },
+    "texture1": { value: sunTextureLoader.load( NOISEMAP, ( loaded ) => { renderer.render( scene, camera ); } ) },
+    "texture2": { value: sunTextureLoader.load( SUNMAP, ( loaded ) => { renderer.render( scene, camera ); } ) }
+};
+
+uniforms[ "texture1" ].value.wrapS = uniforms[ "texture1" ].value.wrapT = THREE.RepeatWrapping;
+uniforms[ "texture2" ].value.wrapS = uniforms[ "texture2" ].value.wrapT = THREE.RepeatWrapping;
+
+const vertexShader = require( '../shaders/vertex.glsl' );
+const fragmentShader = require( '../shaders/fragment.glsl' );
+
+const sunMaterial = new THREE.ShaderMaterial( {
+    uniforms,
+    vertexShader,
+    fragmentShader
+} );
+
+const RSun= 5*RTierra;
+const sunGeometry=new THREE.SphereGeometry(RSun,32,32);
+const sun = new THREE.Mesh(sunGeometry,sunMaterial);
+sun.position.set(100, 50, 50);
+scene.add(sun);
 const clock = new THREE.Clock( );
 
 function animate( ) {
@@ -74,6 +105,11 @@ function animate( ) {
     tierra.rotation.y += rotation;
     atmos.rotation.y += rotation * 0.95;
 
+    const moonRotationTime= 24*28;
+    const moonRotation= ( delta * Math.PI * 2 ) / moonRotationTime;
+    moonGroup.rotation.y += moonRotation;
+
+    uniforms[ "time" ].value += 0.2 * delta;
     // Render the scene
     renderer.render( scene, camera );
 

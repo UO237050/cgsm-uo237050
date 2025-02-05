@@ -33,13 +33,9 @@ grupoTierra.add(atmos);
 grupoTierra.rotateZ(0.36);
 scene.add(grupoTierra);
 
-const ambientLight = new THREE.AmbientLight(0x404040); 
-scene.add(ambientLight);
-
-const pointLight= new THREE.PointLight(0xFFFFFF, 10000, 1000);
-pointLight.position.set(100, 50, 0);
+const pointLight= new THREE.PointLight(0xFFFFFF, 500,500,1);
+pointLight.position.set(100, 50, 50);
 scene.add(pointLight);
-
 
 
 renderer.render( scene, camera );

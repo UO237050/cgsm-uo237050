@@ -55,13 +55,9 @@ moonGroup.add( moon );
 moonGroup.rotation.x = 0.089;
 scene.add(moonGroup);
 
-//const ambientLight = new THREE.AmbientLight(0x404040,15); 
-//scene.add(ambientLight);
-
-const pointLight= new THREE.PointLight(0xFFFFFF, 150,100,0.5);
-pointLight.position.set(-100, 50, 0);
+const pointLight= new THREE.PointLight(0xFFFFFF, 500,500,1);
+pointLight.position.set(100, 50, 50);
 scene.add(pointLight);
-
 
 
 renderer.render( scene, camera );
