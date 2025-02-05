@@ -7,7 +7,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 const camera = new THREE.PerspectiveCamera ( 45, window.innerWidth / window.innerHeight, 1, 6000 );
-camera.position.set( 0, 0, 2000);
+camera.position.set( 0, 0, 1000);
 
 const RTierra= 50;
 const tierraGeometry= new THREE.SphereGeometry(RTierra,32,32);
@@ -57,7 +57,7 @@ scene.add(moonGroup);
 
 
 const pointLight= new THREE.PointLight(0xFFFFFF, 500,500,1);
-pointLight.position.set(100, 50, 50);
+pointLight.position.set(400, 75, 50);
 scene.add(pointLight);
 
 
@@ -89,10 +89,10 @@ const sunMaterial = new THREE.ShaderMaterial( {
     fragmentShader
 } );
 
-const RSun= 5*RTierra;
+const RSun= 2*RTierra;
 const sunGeometry=new THREE.SphereGeometry(RSun,32,32);
 const sun = new THREE.Mesh(sunGeometry,sunMaterial);
-sun.position.set(100, 50, 50);
+sun.position.set(400, 75, 50);
 scene.add(sun);
 const clock = new THREE.Clock( );
 

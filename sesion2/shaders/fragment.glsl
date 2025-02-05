@@ -38,3 +38,4 @@ void main( void ) {
     fogFactor = 1.0 - clamp( fogFactor, 0.0, 1.0 );
 
     gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+}
