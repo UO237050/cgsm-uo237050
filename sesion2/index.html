@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Informe de prácticas de CGSM (2024-2025)</title>
+        <link rel="stylesheet" type="text/css" href="report.css">
+    </head>
+    <body>
+        <!-- Información general -->
+        <div id="head">
+            <table id="general">
+                <tr>
+                    <th class="header">Nombre:</th>
+                    <td>Pelayo Argüelles Paniagua</td>                     
+                </tr>
+                <tr>
+                    <th>Práctica:</th>
+                    <td>2</td> 
+                </tr>
+            </table>
+        </div>
+        <div id="content">
+            <h1>Memoria</h1>
+            <h2>Descripción de la práctica</h2>
+                <p>Practica 2 , segunda parte de la introducción a WEBGl. Simulación de una escena de tierra-luna-sol</p>
+            <h2>Ejercicio 1</h2>
+                <p>Página de prueba de texturas con foto. En este caso un cubo con una textura que simula madera</p>
+                <iframe class="container" src ="prac2-1.html">  
+                    Escena 1                  
+                </iframe>
+            <h2>Ejercicio 2</h2>
+                <p>Escena con una esfera con la textura de la imagen de la Tierra</p>
+                <iframe class="container" src ="prac2-2.html">
+                    Escena 2
+                </iframe>
+            <h2>Ejercicio 3</h2>
+                <p>A la esfera de la tierra anterior se le añade otra esfera con un minimo más de radio, para simular la atmósfera</p>
+                <iframe class="container" src ="prac2-3.html">
+                    Escena 3
+                </iframe>
+            <h2>Ejercicio 4</h2>
+                <p>La escena anterior aplicandole una rotación a la esfera para simular la inclinación de la Tierra</p>
+                <iframe class="container" src ="prac2-4.html">
+                    Escena 4
+                </iframe>    
+
+            <h2>Ejercicio 5</h2>
+                <p>Se añade a la escena otra esfera que simula la Luna, con un tamaño y una distancia con la tierra a escala </p>
+                <iframe class="container" src ="prac2-5.html">
+                    Escena 5
+                </iframe>       
+
+            <h2>Ejercicio 6</h2>
+                <p>En este ejercicio se aplica animación a al grupo formado por la tierra y la atmosfera, para simular la rotación de la tierra sobre su propio eje.</p>
+                <iframe class="container" src ="prac2-6.html">
+                    Escena 6
+                </iframe>       
+
+            <h2>Ejercicio 7</h2>
+                <p>Siguiendo con las animaciones se aplica la animación que simula la rotación de la luna alrededor de la Tierra</p>
+                <iframe class="container" src ="prac2-7.html">
+                    Escena 7
+                </iframe>      
+
+            <h2>Ejercicio 8</h2>
+                <p>Utilizando shaders se crea una esfera con un material creado a raiz de los shaders que emula el sol.Esta esfera se ubica en la misma posición que la luz para que parezca que es el sol el que da la luz.</p>
+                <iframe class="container" src ="prac2-8.html">
+                    Escena 8
+                </iframe>  
+
+            <h2>Ejercicio 9</h2>
+                <p>Finalmente se utiliza un modelo importado para utilizar una figura más compleja. En este caso el modelo es un satélite de la estación espacial internacional. En mi caso lo añadi a la escena anterior junto con la tierra la luna y el sol, puesto que no sabía si tenía que incluirse en esa escena o en una nueva solo para el modelo.</p>
+                <iframe class="container" src ="prac2-9.html">
+                    Escena 9
+                </iframe>  
+
+
+            <h2>Dificultades encontradas</h2>
+            <p>Las dificultades que yo me he encontrado en esta práctica han sido principalmente encontrar por qué no era capaz de visualizar la esfera de la luna en la prac2-5, que finalmente era porque no estaba referenciando correctamente la textura y por tanto, no la estaba cargando. También otra dificultad fue configurar bien la luz (PointLight) para ubicarla en una posición adecuada para poder visualizar correctamente los elementos de la escena , haciendo una simulación lo más cercana posible al espacio.</p>
+        </div>
+    </body>
+</html>
