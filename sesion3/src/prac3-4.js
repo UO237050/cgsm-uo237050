@@ -52,9 +52,9 @@ const materials = [
 const box1 = new THREE.Mesh( geometry, materials );
 const box2 = new THREE.Mesh( geometry, materials );
 
-box1.position.set(-100,0,-200);
-box2.position.set(100,0,-200);
-
+box1.position.set(-375,25,-375);
+box2.position.set(375,25,-375);
+box2.rotateY(Math.PI);
 scene.add(box1);
 scene.add(box2);
 
